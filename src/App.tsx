@@ -13,6 +13,7 @@ const initialList: ImageDetails[] = [{
   downloads: 0,
   likes: 0,
   tags: '',
+  user: '',
 }]
 
 const App = () => {

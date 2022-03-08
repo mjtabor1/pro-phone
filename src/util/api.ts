@@ -5,6 +5,7 @@ export interface ImageDetails {
   downloads: number;
   likes: number;
   tags: string;
+  user: string;
 }
 
 export interface ImagesResponse {
