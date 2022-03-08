@@ -1,12 +1,22 @@
 import React from "react";
-import ImageSearch from "../components/ImageSearch";
+import { Link } from "react-router-dom";
+import { ImageDetails } from "../util/api";
 
-const Home: React.FC = () => {
+interface Props {
+  images: ImageDetails[] | null;
+}
+
+const Home: React.FC<Props> = ({ images }) => {
   return (
     <>
-      <ImageSearch />
       <div className='gallery'>
-        THE IMAGE GALLERY
+        {images && (images.map((image) => {
+          return (
+            <Link to={`/image/${image.id}`}>
+              <img src={image.webformatURL} alt={image.id.toString()} key={image.id}></img>
+            </Link>
+          )
+        }))}
       </div>
     </>
   )

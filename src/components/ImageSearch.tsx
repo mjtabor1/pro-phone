@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button, Form, FormControl } from 'react-bootstrap';
 
 const ImageSearch: React.FC = () => {
 
+  const [currentInput, setCurrentInput] = useState<string>('');
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    const searchValue = e.target.value;
+    setCurrentInput(searchValue);
+  }
+
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+  }
+
   return (
-    // <div>This is the home search page</div>
-    <form className="image-search">
-      <input 
-        className="input-search"
+    <>
+      <FormControl 
+        onChange={onChange}
+        value={currentInput}
+        type='text'
         placeholder='Search Images'
+        className="mr-sm-2"
       />
-      <button 
-        className="input-button"
-        type="submit"
-      >
+      <Button onClick={handleSubmit} variant="outline-info">
         Search
-      </button>
-    </form>
-  )
+      </Button>
+    </>
+  );
 }
 
 export default React.memo(ImageSearch);
