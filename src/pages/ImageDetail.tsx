@@ -1,6 +1,15 @@
 import React from "react";
+import { ImageDetails } from "../util/api";
 
-const ImageDetail: React.FC = () => {
+interface Props {
+  details?: ImageDetails | never[];
+}
+
+const ImageDetail: React.FC<Props> = ({details}) => {
+  
+  const imageId = window.location.pathname.split('/')[2]
+  console.log(imageId);
+
   return (
     <>
       <div> This is the Image Detail page</div>

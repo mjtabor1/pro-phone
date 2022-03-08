@@ -2,7 +2,12 @@ import React from "react";
 import { Container, Navbar, Nav, Form } from "react-bootstrap"
 import ImageSearch from "./ImageSearch";
 
-export const NavBar = () => {
+interface Props {
+  onSubmit: (val: string) => void;
+}
+
+export const NavBar: React.FC<Props> = ({onSubmit}) => {
+
   return (
     <Navbar sticky="top" expand="lg" bg="dark" variant="dark">
       <Container className="nav-bar-container">
@@ -10,7 +15,7 @@ export const NavBar = () => {
           <Nav.Link href="/">Home</Nav.Link>
         </Nav>
         <Form>
-          <ImageSearch />
+          <ImageSearch onSubmit={onSubmit} />
         </Form>
       </Container>
     </Navbar>

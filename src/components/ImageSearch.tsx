@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Form, FormControl } from 'react-bootstrap';
+import { Button, FormControl } from 'react-bootstrap';
 
-const ImageSearch: React.FC = () => {
+interface Props {
+  onSubmit: (val: string) => void;
+}
+
+const ImageSearch: React.FC<Props> = ({ onSubmit }) => {
 
   const [currentInput, setCurrentInput] = useState<string>('');
 
@@ -11,8 +15,9 @@ const ImageSearch: React.FC = () => {
     setCurrentInput(searchValue);
   }
 
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-
+  const handleSubmit = () => {
+    console.log(currentInput);
+    onSubmit(currentInput);
   }
 
   return (
@@ -22,7 +27,6 @@ const ImageSearch: React.FC = () => {
         value={currentInput}
         type='text'
         placeholder='Search Images'
-        className="mr-sm-2"
       />
       <Button onClick={handleSubmit} variant="outline-info">
         Search
