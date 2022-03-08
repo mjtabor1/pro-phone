@@ -4,6 +4,7 @@ export interface ImageDetails {
   views: number;
   downloads: number;
   likes: number;
+  tags: string;
 }
 
 export interface ImagesResponse {
@@ -26,4 +27,10 @@ export const fetchImages = async (filter?: string): Promise<ImagesResponse> => {
 
   const data = await (await fetch(endpoint)).json();
   return data;
+}
+
+export const fetchImage = async (id: string): Promise<ImagesResponse> => {
+  const endpoint = `${BASE_URL}?key=${api_key}&id=${id}`
+  console.log(endpoint);
+  return await (await fetch(endpoint)).json();
 }

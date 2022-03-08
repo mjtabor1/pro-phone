@@ -6,8 +6,17 @@ import Home from './pages/Home';
 import ImageDetail from './pages/ImageDetail';
 import { fetchImages, ImageDetails } from './util/api';
 
+const initialList: ImageDetails[] = [{
+  id: 0,
+  webformatURL: '',
+  views: 0,
+  downloads: 0,
+  likes: 0,
+  tags: '',
+}]
+
 const App = () => {
-  const [imageList, setImageList] = useState<ImageDetails[] | null>(null);
+  const [imageList, setImageList] = useState<ImageDetails[]>(initialList);
   const [currentSearch, setCurrentSearch] = useState<string | undefined>();
 
   const getImages = useCallback(async (search?: string) => {
@@ -34,7 +43,7 @@ const App = () => {
       <NavBar onSubmit={onSearch}/>
       <Routes>
         <Route path="/" element={<Home images={imageList} />} />
-        <Route path="/image/:id" element={<ImageDetail details={[]} />} />
+        <Route path="/image/:id" element={<ImageDetail />} />
       </Routes>
     </div>
   );

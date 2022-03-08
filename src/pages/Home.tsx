@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ImageDetails } from "../util/api";
 
 interface Props {
-  images: ImageDetails[] | null;
+  images: ImageDetails[];
 }
 
 const Home: React.FC<Props> = ({ images }) => {
